@@ -4,6 +4,8 @@
  */
 package ucb.programacionii.inventariopro;
 
+import java.awt.Dimension;
+
 /**
  *
  * @author OMEN
@@ -15,6 +17,8 @@ public class FrmProducto extends javax.swing.JFrame {
      */
     public FrmProducto() {
         initComponents();
+        this.setTitle("PRODUCTOS - INVENTARIO DE CALZADOS");
+        this.setSize(new Dimension(1000,575));
     }
 
     /**
@@ -32,11 +36,11 @@ public class FrmProducto extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 1000, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 575, Short.MAX_VALUE)
         );
 
         pack();
