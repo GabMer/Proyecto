@@ -4,7 +4,7 @@
  */
 package ucb.programacionii.inventariopro;
 
-import ucb.programacionii.inventario.servicio.MarcaServicio;
+import ucb.programacionii.inventariopro.servicio.MarcaServicio;
 
 /**
  *
