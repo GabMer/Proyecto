@@ -18,6 +18,7 @@ public class MarcaRepositoryImpl {
     public boolean store(Marca marca) {
     String sql = "INSERT INTO marca (id, nombre) "
                + "VALUES (?, ?) "
+               + "ON CONFLICT DO UPDATE SET "
                + "ON DUPLICATE KEY UPDATE "
                + "nombre = VALUES(nombre)";
     try (PreparedStatement stm = DBm.getConnection().prepareStatement(sql)) {
