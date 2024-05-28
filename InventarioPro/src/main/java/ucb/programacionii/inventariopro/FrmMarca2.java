@@ -10,12 +10,12 @@ import ucb.programacionii.inventariopro.servicio.MarcaServicio;
  *
  * @author OMEN
  */
-public class FrmMarca extends javax.swing.JFrame {
+public class FrmMarca2 extends javax.swing.JFrame {
 
     /**
      * Creates new form FrmMarca
      */
-    public FrmMarca() {
+    public FrmMarca2() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -141,13 +141,15 @@ public class FrmMarca extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelRound2Layout.createSequentialGroup()
-                                .addGap(41, 41, 41)
+                                .addGap(33, 33, 33)
                                 .addGroup(panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton5)
                                     .addComponent(jButton3)
-                                    .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING)))
+                                    .addComponent(jButton4)))
                             .addGroup(panelRound2Layout.createSequentialGroup()
-                                .addGap(50, 50, 50)
+                                .addGap(51, 51, 51)
+                                .addComponent(jButton5))
+                            .addGroup(panelRound2Layout.createSequentialGroup()
+                                .addGap(42, 42, 42)
                                 .addComponent(jButton2)))))
                 .addGap(43, 43, 43))
         );
@@ -156,9 +158,9 @@ public class FrmMarca extends javax.swing.JFrame {
             .addGroup(panelRound2Layout.createSequentialGroup()
                 .addGroup(panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(panelRound2Layout.createSequentialGroup()
-                        .addGap(200, 200, 200)
+                        .addGap(194, 194, 194)
                         .addComponent(jButton2)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton3)
                         .addGap(18, 18, 18)
                         .addComponent(jButton4)
@@ -170,7 +172,7 @@ public class FrmMarca extends javax.swing.JFrame {
                             .addComponent(txtFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnBuscar)
                             .addComponent(jLabel1))
-                        .addGap(30, 30, 30)
+                        .addGap(34, 34, 34)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(44, Short.MAX_VALUE))
         );
@@ -196,7 +198,9 @@ public class FrmMarca extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelRound1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(panelRound1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
