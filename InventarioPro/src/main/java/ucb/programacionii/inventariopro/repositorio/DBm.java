@@ -16,8 +16,8 @@ public class DBm {
     private static Connection conne = null;
     public static Connection getConnection() throws SQLException {
      if (conne == null) {
-            String url = "jdbc:postgresql://localhost:5432/ucb_almacen";
-            conne = DriverManager.getConnection(url, "ucb", "Tarija00");
+            String url = "jdbc:postgresql://localhost:5432/PROYECTO";
+            conne = DriverManager.getConnection(url, "adriana123", "adriana123");
         }
 
         return conne;
