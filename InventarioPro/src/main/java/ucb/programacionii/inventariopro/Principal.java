@@ -20,7 +20,8 @@ public final class Principal extends javax.swing.JFrame {
      */
     public Principal() {
         initComponents();
-        jButton1.setIcon(setIcono("/imagenes/inventario.png", jButton1));
+        this.setLocationRelativeTo(null);
+        //btnInventario.setIcon(setIcono("/imagenes/inventario.png", btnInventario));
     }
 
     /**
@@ -35,10 +36,10 @@ public final class Principal extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         panelRound1 = new ucb.programacionii.inventariopro.PanelRound();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        btnInventario = new javax.swing.JButton();
+        btnConfiguracion = new javax.swing.JButton();
+        btnKardex = new javax.swing.JButton();
+        btnVentas = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         jButton4.setText("jButton4");
@@ -53,23 +54,28 @@ public final class Principal extends javax.swing.JFrame {
         panelRound1.setRoundTopLeft(60);
         panelRound1.setRoundTopRight(60);
 
-        jButton1.setText("jButton1");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnInventario.setText("inventario");
+        btnInventario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                btnInventarioMouseClicked(evt);
             }
         });
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnInventario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnInventarioActionPerformed(evt);
             }
         });
 
-        jButton2.setText("jButton2");
+        btnConfiguracion.setText("configuracion");
+        btnConfiguracion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfiguracionActionPerformed(evt);
+            }
+        });
 
-        jButton5.setText("jButton2");
+        btnKardex.setText("Kardex");
 
-        jButton6.setText("jButton2");
+        btnVentas.setText("ventas");
 
         jLabel1.setBackground(new java.awt.Color(0, 153, 153));
         jLabel1.setFont(new java.awt.Font("Trebuchet MS", 1, 36)); // NOI18N
@@ -86,12 +92,12 @@ public final class Principal extends javax.swing.JFrame {
                     .addGroup(panelRound1Layout.createSequentialGroup()
                         .addGap(93, 93, 93)
                         .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(31, 31, 31)
-                        .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btnInventario, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnKardex, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(40, 40, 40)
+                        .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnConfiguracion, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(panelRound1Layout.createSequentialGroup()
                         .addGap(71, 71, 71)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -104,12 +110,12 @@ public final class Principal extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(43, 43, 43)
                 .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnInventario, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnKardex, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnConfiguracion, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(68, 68, 68))
         );
 
@@ -146,14 +152,19 @@ public final class Principal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    private void btnInventarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInventarioMouseClicked
         FrmMarca principal = new FrmMarca();
         principal.setVisible(true);
-    }//GEN-LAST:event_jButton1MouseClicked
+        this.dispose();
+    }//GEN-LAST:event_btnInventarioMouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnInventarioActionPerformed
+
+    private void btnConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfiguracionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnConfiguracionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -189,7 +200,7 @@ public final class Principal extends javax.swing.JFrame {
         
         
     }
-
+/*
     public Icon setIcono(String url, JButton boton)
     {
         ImageIcon icon = new ImageIcon(getClass().getResource(url));
@@ -197,15 +208,15 @@ public final class Principal extends javax.swing.JFrame {
         int alto = boton.getHeight();
         return new ImageIcon(icon.getImage().getScaledInstance(ancho, alto, Image.SCALE_DEFAULT));
     }
-            
+    */        
             
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnConfiguracion;
+    private javax.swing.JButton btnInventario;
+    private javax.swing.JButton btnKardex;
+    private javax.swing.JButton btnVentas;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private ucb.programacionii.inventariopro.PanelRound panelRound1;

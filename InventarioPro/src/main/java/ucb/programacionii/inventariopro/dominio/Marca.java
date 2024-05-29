@@ -17,6 +17,10 @@ public class Marca {
         this.nombre = nombre;
     }
 
+    public Marca() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     // Métodos getters
     public int getId() {
         return id;

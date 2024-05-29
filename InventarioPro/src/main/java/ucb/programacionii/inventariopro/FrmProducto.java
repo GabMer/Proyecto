@@ -4,7 +4,14 @@
  */
 package ucb.programacionii.inventariopro;
 
+import conexion.Conexion;
 import java.awt.Dimension;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,7 +25,9 @@ public class FrmProducto extends javax.swing.JFrame {
     public FrmProducto() {
         initComponents();
         this.setTitle("PRODUCTOS - INVENTARIO DE CALZADOS");
-        this.setSize(new Dimension(1000,575));
+        this.setLocationRelativeTo(null);
+
+        this.CargarTablaProductos();
     }
 
     /**
@@ -34,7 +43,10 @@ public class FrmProducto extends javax.swing.JFrame {
         panelRound2 = new ucb.programacionii.inventariopro.PanelRound();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblProductos = new javax.swing.JTable();
+        btnNuevo = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
+        btnSalida = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 153, 153));
@@ -53,7 +65,7 @@ public class FrmProducto extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Productos");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
@@ -64,69 +76,111 @@ public class FrmProducto extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7", "Title 8", "Title 9", "Title 10", "Title 11", "Title 12", "Title 13", "Title 14", "Title 15", "Title 16"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblProductos);
+
+        btnNuevo.setBackground(new java.awt.Color(0, 153, 153));
+        btnNuevo.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        btnNuevo.setForeground(new java.awt.Color(255, 255, 255));
+        btnNuevo.setText("Nuevo");
+        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoActionPerformed(evt);
+            }
+        });
+
+        btnModificar.setBackground(new java.awt.Color(0, 153, 153));
+        btnModificar.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        btnModificar.setForeground(new java.awt.Color(255, 255, 255));
+        btnModificar.setText("Modificar");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
+
+        btnSalida.setBackground(new java.awt.Color(0, 153, 153));
+        btnSalida.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        btnSalida.setForeground(new java.awt.Color(255, 255, 255));
+        btnSalida.setText("Marcar salida");
 
         javax.swing.GroupLayout panelRound2Layout = new javax.swing.GroupLayout(panelRound2);
         panelRound2.setLayout(panelRound2Layout);
         panelRound2Layout.setHorizontalGroup(
             panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRound2Layout.createSequentialGroup()
-                .addGap(343, 343, 343)
-                .addComponent(jLabel1)
-                .addContainerGap(381, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addGap(16, 16, 16))
+                .addContainerGap(39, Short.MAX_VALUE)
+                .addGroup(panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound2Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(400, 400, 400))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound2Layout.createSequentialGroup()
+                        .addComponent(btnNuevo)
+                        .addGap(58, 58, 58)
+                        .addComponent(btnModificar)
+                        .addGap(62, 62, 62)
+                        .addComponent(btnSalida)
+                        .addGap(274, 274, 274))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound2Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 895, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(21, 21, 21))))
         );
         panelRound2Layout.setVerticalGroup(
             panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRound2Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
+                .addGap(9, 9, 9)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 377, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44)
+                .addGroup(panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnNuevo)
+                    .addComponent(btnModificar)
+                    .addComponent(btnSalida))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout panelRound1Layout = new javax.swing.GroupLayout(panelRound1);
         panelRound1.setLayout(panelRound1Layout);
         panelRound1Layout.setHorizontalGroup(
             panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRound1Layout.createSequentialGroup()
-                .addGap(60, 60, 60)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound1Layout.createSequentialGroup()
+                .addContainerGap(52, Short.MAX_VALUE)
                 .addComponent(panelRound2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addGap(35, 35, 35))
         );
         panelRound1Layout.setVerticalGroup(
             panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRound1Layout.createSequentialGroup()
-                .addGap(60, 60, 60)
+                .addGap(50, 50, 50)
                 .addComponent(panelRound2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1036, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addComponent(panelRound1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addComponent(panelRound1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 640, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addComponent(panelRound1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addComponent(panelRound1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+        NuevoProducto nuevoProducto = new NuevoProducto();
+        nuevoProducto.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnNuevoActionPerformed
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        ModificarProducto modificarProducto = new ModificarProducto();
+        modificarProducto.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnModificarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -164,10 +218,62 @@ public class FrmProducto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnModificar;
+    private javax.swing.JButton btnNuevo;
+    private javax.swing.JButton btnSalida;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    public static javax.swing.JScrollPane jScrollPane1;
     private ucb.programacionii.inventariopro.PanelRound panelRound1;
     private ucb.programacionii.inventariopro.PanelRound panelRound2;
+    public static javax.swing.JTable tblProductos;
     // End of variables declaration//GEN-END:variables
+
+    private void CargarTablaProductos() {
+        Connection con = Conexion.conectar();
+        DefaultTableModel model = new DefaultTableModel();
+        String sql = "SELECT \"MARCA_ID\", \"ID\", \"MARCA\", \"PAIS_DE_ORIGEN\", \"DESCRIPCION_A\", \"DESCRIPCION_B\", \"TALLA\", \"CANTIDAD\", \"COLOR\", \"CATEGORIA\", \"GENERO\", \"TIPO\", \"PRECIO_DE_COMPRA\", \"PRECIO_DE_VENTA\", \"UBICACION_DE_ALMACEN\", \"UBICACION_DE_ARMAZON\" FROM public.\"PRODUCTOS\";";
+        Statement st;
+
+        try {
+
+            st = con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            FrmProducto.tblProductos = new JTable(model);
+            FrmProducto.jScrollPane1.setViewportView(FrmProducto.tblProductos);
+
+            model.addColumn("MARCA_ID");
+            model.addColumn("ID");
+            model.addColumn("MARCA");
+            model.addColumn("PAIS_DE_ORIGEN");
+            model.addColumn("DESCRIPCION_A");
+            model.addColumn("DESCRIPCION_B");
+            model.addColumn("TALLA");
+            model.addColumn("CANTIDAD");
+            model.addColumn("COLOR");
+            model.addColumn("CATEGORIA");
+            model.addColumn("GENERO");
+            model.addColumn("TIPO");
+            model.addColumn("PRECIO_DE_COMPRA");
+            model.addColumn("PRECIO_DE_VENTA");
+            model.addColumn("UBICACION_DE_ALMACEN");
+            model.addColumn("UBICACION_DE_ARMAZON");
+
+            while (rs.next()) {
+
+                Object fila[] = new Object[16];
+
+                for (int i = 0; i < 16; i++) {
+                    fila[i] = rs.getObject(i + 1);
+                }
+                model.addRow(fila);
+
+            }
+            con.close();
+
+        } catch (SQLException e) {
+            System.out.println("ERROR" + e);
+        }
+
+    }
+
 }
