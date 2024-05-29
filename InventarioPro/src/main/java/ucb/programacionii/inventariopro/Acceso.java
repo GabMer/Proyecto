@@ -1,6 +1,9 @@
 
 package ucb.programacionii.inventariopro;
+import controlador.Ctrl_Usuario;
 import java.awt.Dimension;
+import javax.swing.JOptionPane;
+import modelo.Usuario;
 
 /**
  *
@@ -33,10 +36,10 @@ public class Acceso extends javax.swing.JFrame {
         panelRound1 = new ucb.programacionii.inventariopro.PanelRound();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        txtContraseña = new javax.swing.JTextField();
+        lblUsuario = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        btnEntrar = new javax.swing.JButton();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        btnIngresar = new javax.swing.JButton();
+        lblContraseña = new javax.swing.JPasswordField();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -71,9 +74,9 @@ public class Acceso extends javax.swing.JFrame {
 
         jLabel1.setText("Usuario");
 
-        txtContraseña.addActionListener(new java.awt.event.ActionListener() {
+        lblUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtContraseñaActionPerformed(evt);
+                lblUsuarioActionPerformed(evt);
             }
         });
 
@@ -81,11 +84,20 @@ public class Acceso extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(0, 153, 153));
         jLabel2.setText("Contraseña:");
 
-        btnEntrar.setBackground(new java.awt.Color(0, 153, 153));
-        btnEntrar.setForeground(new java.awt.Color(255, 255, 255));
-        btnEntrar.setText("Entrar");
+        btnIngresar.setBackground(new java.awt.Color(0, 153, 153));
+        btnIngresar.setForeground(new java.awt.Color(255, 255, 255));
+        btnIngresar.setText("Entrar");
+        btnIngresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIngresarActionPerformed(evt);
+            }
+        });
 
-        jPasswordField1.setText("jPasswordField1");
+        lblContraseña.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lblContraseñaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelRound1Layout = new javax.swing.GroupLayout(panelRound1);
         panelRound1.setLayout(panelRound1Layout);
@@ -93,7 +105,7 @@ public class Acceso extends javax.swing.JFrame {
             panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRound1Layout.createSequentialGroup()
                 .addGap(112, 112, 112)
-                .addComponent(btnEntrar)
+                .addComponent(btnIngresar)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound1Layout.createSequentialGroup()
                 .addContainerGap(49, Short.MAX_VALUE)
@@ -102,8 +114,8 @@ public class Acceso extends javax.swing.JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
                     .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jPasswordField1, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtContraseña, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)))
+                        .addComponent(lblContraseña, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lblUsuario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)))
                 .addGap(49, 49, 49))
         );
         panelRound1Layout.setVerticalGroup(
@@ -114,13 +126,13 @@ public class Acceso extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
-                .addComponent(btnEntrar)
+                .addComponent(btnIngresar)
                 .addContainerGap(44, Short.MAX_VALUE))
         );
 
@@ -161,9 +173,17 @@ public class Acceso extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraseñaActionPerformed
+    private void lblUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblUsuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtContraseñaActionPerformed
+    }//GEN-LAST:event_lblUsuarioActionPerformed
+
+    private void lblContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblContraseñaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblContraseñaActionPerformed
+
+    private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
+        this.Login();
+    }//GEN-LAST:event_btnIngresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -201,14 +221,38 @@ public class Acceso extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnEntrar;
+    private javax.swing.JButton btnIngresar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JPasswordField lblContraseña;
+    private javax.swing.JTextField lblUsuario;
     private ucb.programacionii.inventariopro.PanelRound panelRound1;
-    private javax.swing.JTextField txtContraseña;
     // End of variables declaration//GEN-END:variables
+
+    private void Login(){
+        if(!lblUsuario.getText().isEmpty() && !lblUsuario.getText().isEmpty() ){
+            
+            Ctrl_Usuario controlUsuario = new Ctrl_Usuario();
+            Usuario usuario = new Usuario();
+            usuario.setUsuario(lblUsuario.getText().trim());
+            usuario.setPassword(lblContraseña.getText().trim());
+            if(controlUsuario.loginUser(usuario)){
+      //          JOptionPane.showMessageDialog(null, "Correcto");
+                Principal principal = new Principal();
+                principal.setVisible(true);
+                this.dispose();
+            }else{
+                JOptionPane.showMessageDialog(null, "IUsuario o claves incorrectos");
+            }
+            
+        }else{
+            JOptionPane.showMessageDialog(null, "Ingrese sus credenciales");
+        }
+        
+    }
+
 }
+

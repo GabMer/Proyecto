@@ -131,7 +131,7 @@
           <SubComponents>
             <Component class="javax.swing.JButton" name="btnInventario">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jButton1"/>
+                <Property name="text" type="java.lang.String" value="inventario"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnInventarioMouseClicked"/>
@@ -140,17 +140,20 @@
             </Component>
             <Component class="javax.swing.JButton" name="btnConfiguracion">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jButton2"/>
+                <Property name="text" type="java.lang.String" value="configuracion"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnConfiguracionActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnKardex">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jButton2"/>
+                <Property name="text" type="java.lang.String" value="Kardex"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="btnVentas">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jButton2"/>
+                <Property name="text" type="java.lang.String" value="ventas"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel1">

@@ -20,7 +20,8 @@ public final class Principal extends javax.swing.JFrame {
      */
     public Principal() {
         initComponents();
-        btnInventario.setIcon(setIcono("/imagenes/inventario.png", btnInventario));
+        this.setLocationRelativeTo(null);
+        //btnInventario.setIcon(setIcono("/imagenes/inventario.png", btnInventario));
     }
 
     /**
@@ -53,7 +54,7 @@ public final class Principal extends javax.swing.JFrame {
         panelRound1.setRoundTopLeft(60);
         panelRound1.setRoundTopRight(60);
 
-        btnInventario.setText("jButton1");
+        btnInventario.setText("inventario");
         btnInventario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnInventarioMouseClicked(evt);
@@ -65,11 +66,16 @@ public final class Principal extends javax.swing.JFrame {
             }
         });
 
-        btnConfiguracion.setText("jButton2");
+        btnConfiguracion.setText("configuracion");
+        btnConfiguracion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfiguracionActionPerformed(evt);
+            }
+        });
 
-        btnKardex.setText("jButton2");
+        btnKardex.setText("Kardex");
 
-        btnVentas.setText("jButton2");
+        btnVentas.setText("ventas");
 
         jLabel1.setBackground(new java.awt.Color(0, 153, 153));
         jLabel1.setFont(new java.awt.Font("Trebuchet MS", 1, 36)); // NOI18N
@@ -149,11 +155,16 @@ public final class Principal extends javax.swing.JFrame {
     private void btnInventarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInventarioMouseClicked
         FrmMarca principal = new FrmMarca();
         principal.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnInventarioMouseClicked
 
     private void btnInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnInventarioActionPerformed
+
+    private void btnConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfiguracionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnConfiguracionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -189,7 +200,7 @@ public final class Principal extends javax.swing.JFrame {
         
         
     }
-
+/*
     public Icon setIcono(String url, JButton boton)
     {
         ImageIcon icon = new ImageIcon(getClass().getResource(url));
@@ -197,7 +208,7 @@ public final class Principal extends javax.swing.JFrame {
         int alto = boton.getHeight();
         return new ImageIcon(icon.getImage().getScaledInstance(ancho, alto, Image.SCALE_DEFAULT));
     }
-            
+    */        
             
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

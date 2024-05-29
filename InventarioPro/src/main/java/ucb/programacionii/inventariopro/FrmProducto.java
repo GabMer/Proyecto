@@ -104,7 +104,7 @@ public class FrmProducto extends javax.swing.JFrame {
                         .addGap(400, 400, 400))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound2Layout.createSequentialGroup()
                         .addComponent(jButton1)
-                        .addGap(74, 74, 74)
+                        .addGap(58, 58, 58)
                         .addComponent(jButton2)
                         .addGap(62, 62, 62)
                         .addComponent(jButton3)
