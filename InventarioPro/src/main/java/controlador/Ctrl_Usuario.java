@@ -31,8 +31,8 @@ public class Ctrl_Usuario {
             }
 
         } catch (SQLException e) {
-            System.out.println("Erro al iniciar sesion");
-            JOptionPane.showMessageDialog(null, "Erro al iniciar sesion");
+            System.out.println("Error al iniciar sesion");
+            JOptionPane.showMessageDialog(null, "Error al iniciar sesion");
 
         }
 
